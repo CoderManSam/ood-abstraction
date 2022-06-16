@@ -1,3 +1,8 @@
+const Task = require("../src/Task.js")
+
+let task
+task = new Task()
+
 class TaskList {
 
   constructor() {
@@ -13,11 +18,11 @@ class TaskList {
     const overdueTasks = []
     for (const task of this.tasks) {
       //it's not been completed
-      if (task.status === "incomplete") {
+      if (task.isIncomplete()) {
         //if it has a due date
-        if (task.dateDue !== null) {
+        if (task.getDateDue() !== null) {
           //if the due date has passed then the task is overdue
-          if (today > task.dateDue) {
+          if (today > task.getDateDue()) {
             overdueTasks.push(task)
           }
         }
